@@ -141,8 +141,6 @@ input[type="number"] {
   margin-right: 20px;
 }
 
-/* custom style  */
-
 .maincontainer {
   transition: all 0.3s ease;
   padding: 20px;
@@ -183,4 +181,180 @@ input[type="number"] {
   cursor: pointer;
   display: inline-block;
   border: 1px solid #999;
+}
+
+.authorname {
+  font-size: 14px;
+  /* border: 1px solid red; */
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-family: "poppins";
+}
+
+.authorname a {
+  color: black;
+  text-decoration: none;
+}
+
+.authorname a:hover {
+  color: purple;
+  text-decoration: none;
+}
+
+.uppersidefirstinput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uppersidefirstinput h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.uppersidefirstinput input {
+  width: 60px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+
+.uppersidefirstinput input.input-error {
+  border-color: red;
+}
+
+#errorMessage {
+  color: red;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  text-align: center;
+  display: none;
+}
+
+.input-error {
+  border-color: red !important;
+}
+
+.settings-icon-img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 2px #0003);
+  transition: transform 0.3s ease;
+  background-color: black;
+  height: 30px;
+  width: 30px;
+  padding: 10px;
+  border-radius: 50%;
+}
+.settings-icon-img:hover {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+  .maincontainer {
+    width: 80%;
+    height: auto;
+    padding: 20px 15px;
+  }
+
+  #Upperside {
+    flex-direction: row;
+    height: auto;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .uppersidefirstinput {
+    width: 100%;
+  }
+
+  .uppersidefirstinput input {
+    width: 80px;
+  }
+
+  #Bottomside {
+    margin-top: 20px;
+  }
+
+  #Bottomside h2 {
+    font-size: 36px;
+    margin: 0;
+  }
+
+  .middleside button {
+    width: 120px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .maincontainer {
+    width: 90%;
+    border-radius: 18px;
+  }
+
+  .uppersidefirstinput input {
+    width: 70px;
+    font-size: 16px;
+  }
+
+  .middleside button {
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
+  }
+
+  #Bottomside h2 {
+    font-size: 32px;
+    width: 100%;
+  }
+
+  .settings-box {
+    width: 85%;
+    right: 10px;
+    top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .maincontainer {
+    padding: 15px 10px;
+    border-radius: 14px;
+  }
+
+  .uppersidefirstinput input {
+    width: 60px;
+    font-size: 14px;
+  }
+
+  .middleside button {
+    font-size: 16px;
+    width: 90px;
+    height: 36px;
+  }
+
+  #Bottomside h2 {
+    font-size: 26px;
+  }
+
+  .settings-icon {
+    top: 12px;
+    right: 12px;
+  }
+
+  .settings-icon-img {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+  }
 }

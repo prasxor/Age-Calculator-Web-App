@@ -1,92 +1,19 @@
 const main = document.createElement("div");
 main.className = "maincontainer";
-
+document.body.appendChild(main);
 
 const style = document.createElement("style");
 
 document.head.appendChild(style);
 
-// === Settings Icon ===
-// const settingsIcon = document.createElement("div");
-// settingsIcon.className = "settings-icon";
-// settingsIcon.innerHTML = "\u2699"; // gear icon ⚙
-// document.body.appendChild(settingsIcon);
-
-// const settingsBox = document.createElement("div");
-// settingsBox.className = "settings-box";
-// settingsBox.innerHTML = `
-//   <p><b>Background</b></p>
-//   <div id="bgOptions"></div>
-//   <p><b>Theme</b></p>
-//   <div id="themeOptions"></div>
-// `;
-// document.body.appendChild(settingsBox);
-
-// settingsIcon.addEventListener("click", () => {
-//   settingsBox.style.display =
-//     settingsBox.style.display === "block" ? "none" : "block";
-// });
-
-// const bgOptions = [
-//   { value: "#ffecd2", type: "color" },
-//   { value: "#e0c3fc", type: "color" },
-//   { value: "./assets/rain-drop.jpg", type: "image" },
-//   { value: "./assets/wp10114525-anime-doodle-wallpapers.jpg", type: "image" },
-//   { value: "./assets/wp13353969-doodle-anime-wallpapers.jpg", type: "image" },
-//   {
-//     value: "./assets/wp14199734-whatsapp-doodle-wallpapers.jpg",
-//     type: "image",
-//   },
-//   {
-//     value: "./assets/wp14199767-whatsapp-doodle-wallpapers.jpg",
-//     type: "image",
-//   },
-//   { value: "./assets/wp15437317-flower-doodle-wallpapers.jpg", type: "image" },
-// ];
-
-// const themeOptions = [
-//   { bg: "rgba(255,255,255,0.4)", text: "#000" },
-//   { bg: "rgba(0,0,0,0.5)", text: "#fff" },
-//   { bg: "#ffffff", text: "#000" },
-//   { bg: "rgba(0, 0, 0, 0)", text: "clear" },
-// ];
-
-// bgOptions.forEach((bg) => {
-//   const opt = document.createElement("div");
-//   opt.className = "bg-option";
-
-//   if (bg.type === "image") {
-//     opt.style.background = `url(${bg.value}) center/cover no-repeat`;
-//   } else {
-//     opt.style.backgroundColor = bg.value;
-//   }
-
-//   opt.onclick = () => {
-//     document.body.style.background =
-//       bg.type === "image"
-//         ? `url(${bg.value}) center/cover no-repeat`
-//         : bg.value;
-//   };
-
-//   document.getElementById("bgOptions").appendChild(opt);
-// });
-
-// themeOptions.forEach((theme) => {
-//   const opt = document.createElement("div");
-//   opt.className = "color-option";
-//   opt.style.backgroundColor = theme.bg;
-//   opt.onclick = () => {
-//     const container = document.querySelector(".maincontainer");
-//     container.style.background = theme.bg;
-//     container.style.color = theme.text;
-//   };
-//   settingsBox.querySelector("#themeOptions").appendChild(opt);
-// });
-
-
 const settingsIcon = document.createElement("div");
 settingsIcon.className = "settings-icon";
-settingsIcon.innerHTML = "\u2699"; // gear icon ⚙
+const img = document.createElement("img");
+img.src = "./assets/gear-solid.svg";
+img.alt = "Settings";
+img.className = "settings-icon-img";
+
+settingsIcon.appendChild(img);
 document.body.appendChild(settingsIcon);
 
 const settingsBox = document.createElement("div");
@@ -97,6 +24,7 @@ settingsBox.innerHTML = `
   <input type="file" id="bgUpload" accept="image/*">
   <p><b>Theme</b></p>
   <div id="themeOptions"></div>
+  <p class="authorname"><a href="https://prasxor.me">author - Prasxor </a></p>
 `;
 document.body.appendChild(settingsBox);
 
@@ -109,11 +37,31 @@ const bgOptions = [
   { value: "#ffecd2", type: "color", tooltip: "Soft peach" },
   { value: "#e0c3fc", type: "color", tooltip: "Purple haze" },
   { value: "./assets/rain-drop.jpg", type: "image", tooltip: "Rain drop" },
-  { value: "./assets/wp10114525-anime-doodle-wallpapers.jpg", type: "image", tooltip: "Anime Doodle 1" },
-  { value: "./assets/wp13353969-doodle-anime-wallpapers.jpg", type: "image", tooltip: "Anime Doodle 2" },
-  { value: "./assets/wp14199734-whatsapp-doodle-wallpapers.jpg", type: "image", tooltip: "WhatsApp Doodle 1" },
-  { value: "./assets/wp14199767-whatsapp-doodle-wallpapers.jpg", type: "image", tooltip: "WhatsApp Doodle 2" },
-  { value: "./assets/wp15437317-flower-doodle-wallpapers.jpg", type: "image", tooltip: "Flower Doodle" },
+  {
+    value: "./assets/wp10114525-anime-doodle-wallpapers.jpg",
+    type: "image",
+    tooltip: "Anime Doodle 1",
+  },
+  {
+    value: "./assets/wp13353969-doodle-anime-wallpapers.jpg",
+    type: "image",
+    tooltip: "Anime Doodle 2",
+  },
+  {
+    value: "./assets/wp14199734-whatsapp-doodle-wallpapers.jpg",
+    type: "image",
+    tooltip: "WhatsApp Doodle 1",
+  },
+  {
+    value: "./assets/wp14199767-whatsapp-doodle-wallpapers.jpg",
+    type: "image",
+    tooltip: "WhatsApp Doodle 2",
+  },
+  {
+    value: "./assets/wp15437317-flower-doodle-wallpapers.jpg",
+    type: "image",
+    tooltip: "Flower Doodle",
+  },
 ];
 
 const themeOptions = [
@@ -125,9 +73,7 @@ const themeOptions = [
 
 function applyBackground(bg) {
   document.body.style.background =
-    bg.type === "image"
-      ? `url(${bg.value}) center/cover no-repeat`
-      : bg.value;
+    bg.type === "image" ? `url(${bg.value}) center/cover no-repeat` : bg.value;
   localStorage.setItem("userBackground", JSON.stringify(bg));
 }
 
@@ -163,7 +109,11 @@ uploadInput.addEventListener("change", (e) => {
   if (file) {
     const reader = new FileReader();
     reader.onload = function (event) {
-      const bg = { value: event.target.result, type: "image", tooltip: file.name };
+      const bg = {
+        value: event.target.result,
+        type: "image",
+        tooltip: file.name,
+      };
       applyBackground(bg);
     };
     reader.readAsDataURL(file);
@@ -183,8 +133,6 @@ themeOptions.forEach((theme) => {
   settingsBox.querySelector("#themeOptions").appendChild(opt);
 });
 
-
-// === Add Enter Key Submission ===
 ["dayInput", "monthInput", "yearInput"].forEach((id) => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
@@ -194,17 +142,26 @@ themeOptions.forEach((theme) => {
   });
 });
 
-// === Add Personalized Age Message ===
-function displayAgeMessage(ageYears) {
+function displayAgeMessage(ageYears, ageMonths, ageDays) {
   const messageBox =
     document.getElementById("ageMessage") || document.createElement("div");
   messageBox.id = "ageMessage";
+
   let msg = "";
-  if (ageYears < 13) msg = "You're a cool kid! 🎈";
-  else if (ageYears < 20) msg = "Teen energy activated! 🔥";
-  else if (ageYears < 30) msg = "Time to hustle! 💼";
-  else if (ageYears < 50) msg = "You're rocking adulthood! 🚀";
-  else msg = "Full of wisdom and stories! 📚";
+
+  if (ageMonths === 0 && ageDays === 0) {
+    msg = `🎉 Happy ${ageYears}ᵗʰ Birthday! 🎂🎈`;
+  } else if (ageYears < 13) {
+    msg = "You're a cool kid! 🎈";
+  } else if (ageYears < 20) {
+    msg = "Teen energy activated! 🔥";
+  } else if (ageYears < 30) {
+    msg = "Time to hustle! 💼";
+  } else if (ageYears < 50) {
+    msg = "You're rocking adulthood! 🚀";
+  } else {
+    msg = "Full of wisdom and stories! 📚";
+  }
 
   messageBox.textContent = msg;
   messageBox.style.marginTop = "10px";
@@ -214,23 +171,60 @@ function displayAgeMessage(ageYears) {
   document.querySelector(".maincontainer").appendChild(messageBox);
 }
 
-// === Modify calculateAge to call displayAgeMessage ===
+const errorBox = document.createElement("div");
+errorBox.id = "errorMessage";
 function calculateAge() {
-  const day = parseInt(document.getElementById("dayInput").value);
-  const month = parseInt(document.getElementById("monthInput").value) - 1;
-  const year = parseInt(document.getElementById("yearInput").value);
+  const dayInput = document.getElementById("dayInput");
+  const monthInput = document.getElementById("monthInput");
+  const yearInput = document.getElementById("yearInput");
+  const errorBox = document.getElementById("errorMessage");
 
+  const day = parseInt(dayInput.value);
+  const month = parseInt(monthInput.value) - 1;
+  const year = parseInt(yearInput.value);
   const today = new Date();
   const birthDate = new Date(year, month, day);
 
-  if (isNaN(day) || isNaN(month) || isNaN(year))
-    return alert("Please fill all fields.");
-  if (day < 1 || day > 31) return alert("Day must be between 1-31.");
-  if (month < 0 || month > 11) return alert("Month must be between 1-12.");
-  if (birthDate > today) return alert("Date cannot be in the future.");
+  const setError = (msg, input) => {
+    errorBox.textContent = msg;
+    errorBox.style.display = "block";
+    if (input) input.classList.add("input-error");
+  };
+
+  const clearError = () => {
+    errorBox.textContent = "";
+    errorBox.style.display = "none";
+    [dayInput, monthInput, yearInput].forEach((input) =>
+      input.classList.remove("input-error")
+    );
+  };
+
+  clearError();
+
+  if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    return setError("⚠️ Please fill out all the fields.");
+  }
+
+  if (year > today.getFullYear()) {
+    return setError("Birth year can't be in the future.", yearInput);
+  }
+  if (year < 1900) {
+    return setError("That's too old to be real! Try again.", yearInput);
+  }
+  if (day < 1 || day > 31)
+    return setError("Day should be between 1–31.", dayInput);
+  if (month < 0 || month > 11)
+    return setError("Month should be between 1–12.", monthInput);
+  if (birthDate > today)
+    return setError("Future date? That's not possible!", yearInput);
 
   const maxDays = new Date(year, month + 1, 0).getDate();
-  if (day > maxDays) return alert(`Invalid date: ${day}/${month + 1}/${year}`);
+  if (day > maxDays) {
+    return setError(
+      `⚠️ ${day}/${month + 1}/${year} is not a valid date.`,
+      dayInput
+    );
+  }
 
   let ageYears = today.getFullYear() - year;
   let ageMonths = today.getMonth() - month;
@@ -240,6 +234,7 @@ function calculateAge() {
     ageMonths--;
     ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
   }
+
   if (ageMonths < 0) {
     ageYears--;
     ageMonths += 12;
@@ -248,7 +243,8 @@ function calculateAge() {
   animateCounter("years", ageYears);
   animateCounter("months", ageMonths);
   animateCounter("days", ageDays);
-  displayAgeMessage(ageYears);
+
+  displayAgeMessage(ageYears, ageMonths, ageDays);
 }
 
 function animateCounter(id, endVal) {
@@ -267,14 +263,16 @@ function animateCounter(id, endVal) {
   }, 50);
 }
 
-// === Your Original DOM Setup Continues Here ===
-// (Add the original code from the maincontainer generation if not already included.)
-
-// === Upper Side ===
 const upper = document.createElement("div");
 upper.id = "Upperside";
 
-["DAY", "MONTH", "YEAR"].forEach((label, i) => {
+const ranges = {
+  DAY: [1, 31],
+  MONTH: [1, 12],
+  YEAR: [1000, 9999],
+};
+
+["DAY", "MONTH", "YEAR"].forEach((label) => {
   const inputWrapper = document.createElement("div");
   inputWrapper.className = "uppersidefirstinput";
 
@@ -283,18 +281,40 @@ upper.id = "Upperside";
 
   const input = document.createElement("input");
   input.type = "number";
-  input.placeholder = "00";
+  input.inputMode = "numeric";
+  input.maxLength = 4;
+  input.pattern = "[0-9]*";
+  input.placeholder = label === "YEAR" ? "0000" : "00";
+  input.maxLength = label === "YEAR" ? 4 : 2;
   input.id = `${label.toLowerCase()}Input`;
 
-  if (label === "YEAR") input.placeholder = "0000";
+  input.addEventListener("input", () => {
+    if (input.value.length > input.maxLength) {
+      input.value = input.value.slice(0, input.maxLength);
+    }
+  });
+
+  input.addEventListener("input", () => {
+    const value = parseInt(input.value);
+    const [min, max] = ranges[label];
+
+    if (value < min || value > max || isNaN(value)) {
+      input.classList.add("input-error");
+    } else {
+      input.classList.remove("input-error");
+    }
+  });
 
   inputWrapper.appendChild(heading);
   inputWrapper.appendChild(input);
   upper.appendChild(inputWrapper);
 });
-main.appendChild(upper);
 
-// === Middle Side ===
+main.appendChild(upper);
+errorBox.className = "error-message";
+errorBox.style.display = "none";
+main.appendChild(errorBox);
+
 const middle = document.createElement("div");
 middle.className = "middleside";
 
@@ -306,7 +326,6 @@ button.textContent = "Submit";
 middle.appendChild(button);
 main.appendChild(middle);
 
-// === Bottom Side ===
 const bottom = document.createElement("div");
 bottom.id = "Bottomside";
 
@@ -324,8 +343,6 @@ bottomLabels.forEach((label) => {
 
 main.appendChild(bottom);
 
-// === Append everything to body ===
 document.body.appendChild(main);
 
-// === Your calculateAge() logic here ===
 document.getElementById("submitBtn").addEventListener("click", calculateAge);
