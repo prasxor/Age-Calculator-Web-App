@@ -9,7 +9,7 @@ document.head.appendChild(style);
 const settingsIcon = document.createElement("div");
 settingsIcon.className = "settings-icon";
 const img = document.createElement("img");
-img.src = "./assets/gear-solid.svg";
+img.src = "./Assets/gear-solid.svg";
 img.alt = "Settings";
 img.className = "settings-icon-img";
 
@@ -36,29 +36,29 @@ settingsIcon.addEventListener("click", () => {
 const bgOptions = [
   { value: "#ffecd2", type: "color", tooltip: "Soft peach" },
   { value: "#e0c3fc", type: "color", tooltip: "Purple haze" },
-  { value: "./assets/rain-drop.jpg", type: "image", tooltip: "Rain drop" },
+  { value: "./Assets/rain-drop.jpg", type: "image", tooltip: "Rain drop" },
   {
-    value: "./assets/wp10114525-anime-doodle-wallpapers.jpg",
+    value: "./Assets/wp10114525-anime-doodle-wallpapers.jpg",
     type: "image",
     tooltip: "Anime Doodle 1",
   },
   {
-    value: "./assets/wp13353969-doodle-anime-wallpapers.jpg",
+    value: "./Assets/wp13353969-doodle-anime-wallpapers.jpg",
     type: "image",
     tooltip: "Anime Doodle 2",
   },
   {
-    value: "./assets/wp14199734-whatsapp-doodle-wallpapers.jpg",
+    value: "./Assets/wp14199734-whatsapp-doodle-wallpapers.jpg",
     type: "image",
     tooltip: "WhatsApp Doodle 1",
   },
   {
-    value: "./assets/wp14199767-whatsapp-doodle-wallpapers.jpg",
+    value: "./Assets/wp14199767-whatsapp-doodle-wallpapers.jpg",
     type: "image",
     tooltip: "WhatsApp Doodle 2",
   },
   {
-    value: "./assets/wp15437317-flower-doodle-wallpapers.jpg",
+    value: "./Assets/wp15437317-flower-doodle-wallpapers.jpg",
     type: "image",
     tooltip: "Flower Doodle",
   },
